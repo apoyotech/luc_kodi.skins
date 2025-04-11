@@ -43,10 +43,7 @@ h1 {
     -webkit-background-clip: text;
 }     
 h2 {
-     margin-bottom: 20px;
-     
-    
-
+  margin-bottom: 20px;
   --primary-neon: #000000;
   --light-neon: indigo;
   --pulse-neon: indigo;
@@ -58,23 +55,20 @@ h2 {
   --neon-shadow-bright:0 0 8px 4px var(--bright-neon), 0 0 8px 4px var(--bright-neon) inset;
   --neon-shadow-text:0 0 7px var(--primary-neon);
   
- 
-  
   color:var(--primary-neon);
-  
-  border:1px solid var(--light-neon);
+  border:1px solid var(--primary-neon);
   border-radius:10px;
   padding: 1rem 2rem;
   align-items:center;
   justify-content:center;
-  
   font-size: 1rem;
   font-weight:bold;
   box-shadow:var(--neon-shadow);
   animation:flicker 2s linear infinite;
 }
 
-@keyframes flicker {
+
+    @keyframes flicker {
   0% {
     box-shadow:var(--neon-shadow);
   }
@@ -138,10 +132,6 @@ h2 {
     border-color:var(--primary-neon);
   }
 }
-
-
-
-
 
 
 </style>
