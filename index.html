@@ -42,96 +42,122 @@ h1 {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }     
-h2 {
-  margin-bottom: 20px;
-  --primary-neon: #000000;
-  --light-neon: indigo;
-  --pulse-neon: indigo;
-  --bright-neon: indigo;
-  --off-neon:#333;
-  
-  --neon-shadow:0 0 7px 4px var(--light-neon), 0 0 7px 4px var(--light-neon) inset;
-  --neon-shadow-pulse:0 0 8px 5px var(--pulse-neon), 0 0 8px 5px var(--pulse-neon) inset;
-  --neon-shadow-bright:0 0 8px 4px var(--bright-neon), 0 0 8px 4px var(--bright-neon) inset;
-  --neon-shadow-text:0 0 7px var(--primary-neon);
-  
-  color:var(--primary-neon);
-  border:1px solid var(--primary-neon);
-  border-radius:10px;
-  padding: 1rem 2rem;
-  align-items:center;
-  justify-content:center;
+
+.h2,
+.h2 *,
+.h2 :after,
+.h2 :before,
+.h2:after,
+.h2:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.h2 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  text-transform: uppercase;
+}
+.h2:disabled {
+  cursor: default;
+}
+.h2:-moz-focusring {
+  outline: auto;
+}
+.h2 svg {
+  vertical-align: middle;
+}
+.h2 [hidden] {
+  display: none;
+}
+.h2 {
+  --thickness: 0.3rem;
+  --roundness: 1.2rem;
+  --color: #eff6ff;
+  --opacity: 0.6;
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
+  background: none;
+  background: hsla(0, 0%, 100%, 0.2);
+  border: none;
+  border-radius: var(--roundness);
+  color: var(--color);
+  cursor: pointer;
+  display: block;
+  font-family: Poppins, "sans-serif";
   font-size: 1rem;
-  font-weight:bold;
-  box-shadow:var(--neon-shadow);
-  animation:flicker 2s linear infinite;
+  font-weight: 500;
+  padding: 0.8rem 3rem;
+  position: relative;
+}
+.h2:hover {
+  background: hsla(0, 0%, 100%, 0.3);
+  filter: brightness(1.2);
+}
+.h2:active {
+  --opacity: 0;
+  background: hsla(0, 0%, 100%, 0.1);
+}
+.h2 svg {
+  border-radius: var(--roundness);
+  display: block;
+  filter: url(#glow);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.h2 rect {
+  fill: none;
+  stroke: var(--color);
+  stroke-width: var(--thickness);
+  rx: var(--roundness);
+  stroke-linejoin: round;
+  stroke-dasharray: 185%;
+  stroke-dashoffset: 80;
+  -webkit-animation: snake 2s linear infinite;
+  animation: snake 2s linear infinite;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+.h2:hover rect {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+  opacity: var(--opacity);
+}
+@-webkit-keyframes snake {
+  to {
+    stroke-dashoffset: 370%;
+  }
+}
+@keyframes snake {
+  to {
+    stroke-dashoffset: 370%;
+  }
 }
 
 
-    @keyframes flicker {
-  0% {
-    box-shadow:var(--neon-shadow);
-  }
-  45% {
-    box-shadow:var(--neon-shadow-pulse);
-  }
-  90% {
-    box-shadow:var(--neon-shadow);
-    border-color:var(--primary-neon);
-    color:var(--primary-neon);
-    text-shadow:var(--neon-shadow-text);
-  }
-  90.01% {
-    box-shadow:none;
-    border-color:var(--off-neon);
-    color:var(--off-neon);
-    text-shadow:none;
-  }
-  94% {
-    box-shadow:none;
-    border-color:var(--off-neon);
-  }
-  94.01% {
-    box-shadow:var(--neon-shadow);
-    border-color:var(--primary-neon);
-  }
-  95% {
-    box-shadow:var(--neon-shadow);
-    border-color:var(--primary-neon);
-  }
-  95.01% {
-    box-shadow:none;
-    border-color:var(--off-neon);
-  }
-  95.5% {
-    box-shadow:none;
-    border-color:var(--off-neon);
-  }
-  95.51% {
-    box-shadow:var(--neon-shadow);
-    border-color:var(--primary-neon);
-  }
-  96% {
-    box-shadow:var(--neon-shadow);
-    border-color:var(--primary-neon);
-  }
-  96.01% {
-    box-shadow:none;
-    border-color:var(--off-neon);
-  }
-  96.5% {
-    box-shadow:none;
-    border-color:var(--off-neon);
-  }
-  96.51% {
-    box-shadow:var(--neon-shadow-bright);
-    border-color:var(--primary-neon);
-  }
-  100% {
-    box-shadow:var(--neon-shadow);
-    border-color:var(--primary-neon);
-  }
-}
+
+
+
+    
 
 
 </style>
