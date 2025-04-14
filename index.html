@@ -55,76 +55,63 @@ h2 {
   text-align: center;
   border-radius: 15px;
   justify-content: center;
-  padding-left: 20px;
-  padding-right: 20px; 
-  inset: -1em;
-  --c: 7px;
   background-color: #000;
-  background-image: radial-gradient(
-      circle at 50% 50%,
-      #0000 1.5px,
-      #000 0 var(--c),
-      #0000 var(--c)
-    ),
-    radial-gradient(
-      circle at 50% 50%,
-      #0000 1.5px,
-      #000 0 var(--c),
-      #0000 var(--c)
-    ),
-    radial-gradient(circle at 50% 50%, #f00, #f000 60%),
-    radial-gradient(circle at 50% 50%, #ff0, #ff00 60%),
-    radial-gradient(circle at 50% 50%, #0f0, #0f00 60%),
-    radial-gradient(ellipse at 50% 50%, #00f, #00f0 60%);
-  background-size:
-    12px 20.7846097px,
-    12px 20.7846097px,
-    200% 200%,
-    200% 200%,
-    200% 200%,
-    200% 20.7846097px;
-  --p: 0px 0px, 6px 10.39230485px;
-  background-position:
-    var(--p),
-    0% 0%,
-    0% 0%,
-    0% 0px;
-  animation:
-    wee 40s linear infinite,
-    filt 6s linear infinite;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-@keyframes filt {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  to {
-    filter: hue-rotate(360deg);
-  }
+.h2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -5px;
+  margin: auto;
+  width: 200px;
+  height: 264px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, red 0%, yellow 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes wee {
-  0% {
-    background-position:
-      var(--p),
-      800% 400%,
-      1000% -400%,
-      -1200% -600%,
-      400% 41.5692194px;
-  }
-  to {
-    background-position:
-      var(--p),
-      0% 0%,
-      0% 0%,
-      0% 0%,
-      0% 0%;
-  }
+.h2::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, red 0%, yellow 100%);
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
 }
+
+.heading {
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.card p:not(.heading) {
+  font-size: 14px;
+}
+
+.card p:last-child {
+  color: #e81cff;
+  font-weight: 600;
+}
+
+.card:hover::after {
+  filter: blur(30px);
+}
+
+.card:hover::before {
+  transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+}
+
      
 h3 {
 font-size: 1.2rem;
-    
 }
 
 </style>
